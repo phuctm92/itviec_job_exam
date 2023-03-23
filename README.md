@@ -1,24 +1,12 @@
-# README
+## Requirement
+Please create a Job model with 2 columns:
+Title: String
+Description: Text
+Add CRUD functions for Job by using Hotwire
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Prerequisites
+- Ruby 3.2.0
+- Rails 7.0
+- Mysql 5.7
 
-Things you may want to cover:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
