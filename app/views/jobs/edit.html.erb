@@ -5,5 +5,7 @@
     <h1>Edit Job</h1>
   </div>
 
-  <%= render "form", job: @job %>
+  <%= turbo_frame_tag @job do %>
+    <%= render "form", job: @job %>
+  <% end %>
 </main>

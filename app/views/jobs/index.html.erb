@@ -1,10 +1,16 @@
 <main class="container">
-  <div class="header">
-    <h1>Jobs</h1>
-    <%= link_to "New job",
-                new_job_path,
-                class: "btn btn--primary" %>
-  </div>
+  <%= turbo_frame_tag "first_turbo_frame" do %>
+    <div class="header">
+      <h1>Jobs</h1>
+      <%= link_to "New job",
+                  new_job_path,
+                  data: { turbo_frame: dom_id(Job.new) },
+                  class: "btn btn--primary" %>
+    </div>
+  <% end %>
 
-  <%= render @jobs %>
+  <%= turbo_frame_tag Job.new %>
+  <%= turbo_frame_tag "jobs" do %>
+    <%= render @jobs %>
+  <% end %>
 </main>

@@ -1,12 +1,16 @@
-<div class="job">
-  <%= link_to job.title, job_path(job) %>
-  <div class="job__actions">
-    <%= button_to "Delete",
-                  job_path(job),
-                  method: :delete,
+<%= turbo_frame_tag job do %>
+  <div class="job">
+    <%= link_to job.title,
+                job_path(job),
+                data: { turbo_frame: "_top" } %>
+    <div class="job__actions">
+      <%= button_to "Delete",
+                    job_path(job),
+                    method: :delete,
+                    class: "btn btn--light" %>
+      <%= link_to "Edit",
+                  edit_job_path(job),
                   class: "btn btn--light" %>
-    <%= link_to "Edit",
-                edit_job_path(job),
-                class: "btn btn--light" %>
+    </div>
   </div>
-</div>
+<% end %>

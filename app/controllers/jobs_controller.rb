@@ -3,7 +3,7 @@ class JobsController < ApplicationController
 
   # GET /jobs or /jobs.json
   def index
-    @jobs = Job.all
+    @jobs = Job.ordered
   end
 
   # GET /jobs/1 or /jobs/1.json
@@ -23,23 +23,22 @@ class JobsController < ApplicationController
   def create
     @job = Job.new(job_params)
 
-    respond_to do |format|
-      if @job.save
-        format.html { redirect_to job_url(@job), notice: "Job was successfully created." }
-      else
-        format.html { render :new, status: :unprocessable_entity }
+    if @job.save
+      respond_to do |format|
+        format.html { redirect_to jobs_path, notice: I18n.t('jobs.message.success.create') }
+        format.turbo_stream
       end
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /jobs/1 or /jobs/1.json
   def update
-    respond_to do |format|
-      if @job.update(job_params)
-        format.html { redirect_to job_url(@job), notice: "Job was successfully updated." }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-      end
+    if @job.update(job_params)
+      redirect_to jobs_path, notice: I18n.t('jobs.message.success.update')
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -48,8 +47,8 @@ class JobsController < ApplicationController
     @job.destroy
 
     respond_to do |format|
-      format.html { redirect_to jobs_url, notice: "Job was successfully destroyed." }
-      format.json { head :no_content }
+      format.html { redirect_to jobs_path, notice: I18n.t('jobs.message.success.destroy') }
+      format.turbo_stream
     end
   end
 
