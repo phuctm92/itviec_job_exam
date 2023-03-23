@@ -26,10 +26,8 @@ class JobsController < ApplicationController
     respond_to do |format|
       if @job.save
         format.html { redirect_to job_url(@job), notice: "Job was successfully created." }
-        format.json { render :show, status: :created, location: @job }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @job.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -39,10 +37,8 @@ class JobsController < ApplicationController
     respond_to do |format|
       if @job.update(job_params)
         format.html { redirect_to job_url(@job), notice: "Job was successfully updated." }
-        format.json { render :show, status: :ok, location: @job }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @job.errors, status: :unprocessable_entity }
       end
     end
   end

@@ -1,27 +1,12 @@
-<%= form_with(model: job) do |form| %>
+<%= simple_form_for job, html: { class: "job form" } do |f| %>
   <% if job.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(job.errors.count, "error") %> prohibited this job from being saved:</h2>
-
-      <ul>
-        <% job.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+    <div class="error-message">
+      <%= job.errors.full_messages.to_sentence.capitalize %>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
+  <%= f.input :title, input_html: { autofocus: true } %>
+  <%= f.submit class: "btn btn--secondary" %>
+  <div class="line-break"></div>
+  <%= f.input :description, as: :text %>
 <% end %>

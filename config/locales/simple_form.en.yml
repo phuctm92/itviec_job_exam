@@ -1,0 +1,18 @@
+# config/locales/simple_form.en.yml
+
+en:
+  simple_form:
+    placeholders:
+      job:
+        title: Title of your job
+        description: Description
+    labels:
+      job:
+        title: Name
+        description: Description
+
+  helpers:
+    submit:
+      job:
+        create: Create Job
+        update: Update Job

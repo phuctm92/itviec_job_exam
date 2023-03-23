@@ -1,14 +1,10 @@
-<p style="color: green"><%= notice %></p>
+<main class="container">
+  <div class="header">
+    <h1>Jobs</h1>
+    <%= link_to "New job",
+                new_job_path,
+                class: "btn btn--primary" %>
+  </div>
 
-<h1>Jobs</h1>
-
-<div id="jobs">
-  <% @jobs.each do |job| %>
-    <%= render job %>
-    <p>
-      <%= link_to "Show this job", job %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New job", new_job_path %>
+  <%= render @jobs %>
+</main>

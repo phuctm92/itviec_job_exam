@@ -1,9 +1,9 @@
-<h1>New job</h1>
+<main class="container">
+  <%= link_to sanitize("&larr; Back to jobs"), jobs_path %>
 
-<%= render "form", job: @job %>
+  <div class="header">
+    <h1>New Job</h1>
+  </div>
 
-<br>
-
-<div>
-  <%= link_to "Back to jobs", jobs_path %>
-</div>
+  <%= render "form", job: @job %>
+</main>
